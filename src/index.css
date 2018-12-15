@@ -1,17 +1,10 @@
-body {
+* {
+	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-	"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-	sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	box-sizing: border-box;
-}
-
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-	monospace;
 }
 
 .article {
@@ -26,11 +19,12 @@ code {
 
 .article:hover {
 	cursor: pointer;
-	background: #cccccc;
+	border: 2px solid #c6c6c6;
 }
 
 .none {
-	display: none;
+	opacity: 0;
+	max-height: 0;
 }
 
 .row {
@@ -72,8 +66,9 @@ code {
 }
 
 .input {
-	font-size: 16px;
 	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 16px;
 	border: 1px solid darkgray;
 	border-radius: 5px;
 	height: 50px;
@@ -91,19 +86,19 @@ code {
 }
 
 .textarea {
+	padding: 10px;
 	font-size: 16px;
-	padding-left: 10px;
 	margin: 15px auto;
-	width: 100%;
+	width: 99%;
 	height: 150px;
+	border-radius: 5px;
 	resize: none;
 }
 
 .button {
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin: 15px auto;
 	width: 150px;
-	height: 30px;
+	height: 45px;
 	color: #fff;
 	background-color: #007bff;
 	border-color: #007bff;
@@ -111,7 +106,10 @@ code {
 	align-items: center;
 	justify-content: center;
 	border-radius: 5px;
+	font-weight: bold;
+	text-transform: uppercase;
 	border: none;
+	transition: .1s linear;
 }
 
 .button:hover {
@@ -134,7 +132,20 @@ code {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
 	width: 100%;
 	max-width: 1280px;
+}
+
+.news__link {
+	font-size: 15px;
+	text-align: center;
+	text-decoration: none;
+	color: tomato;
+	border-bottom: 1px solid;
+	transition: .1s linear;
+}
+
+.news__link:hover {
+	border-bottom: 1px solid transparent;
 }

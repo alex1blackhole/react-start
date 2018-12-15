@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import './App.css';
 
 class Add extends Component {
+
     constructor() {
         super();
         this.state = {
             name: '',
             text:'',
-            Bigtext:'',
-            checkbox:false
+	        bigText:'',
+            checkbox:false,
         };
-
     }
 
 	handleChange = (event) => {
@@ -47,8 +47,7 @@ class Add extends Component {
 	};
 
     render() {
-        const { name, text , checkbox} = this.state;
-
+        const { name, text ,bigText, checkbox } = this.state;
 
         return (
             <form className="form">
@@ -58,20 +57,23 @@ class Add extends Component {
                 <div className="form__content">
 
                     <label htmlFor="" className="label">Автор</label>
-
                     <input onChange={this.handleChange} id='name' value={name}
                            type="text" className='input'/>
 
-                    <label htmlFor="" className="label">Текст</label>
+	                <label htmlFor="" className="label">Текст</label>
+	                <input onChange={this.handleChange} id='text' value={text}
+	                       type="text" className='input'/>
 
-                    <textarea onChange={this.handleChange} id='text' value={text}
+                    <label htmlFor="" className="label">Описание</label>
+                    <textarea onChange={this.handleChange} id='bigText' value={bigText}
                               className="textarea">
                     </textarea>
 
                     <input onChange={this.handleCheckboxChange} type="checkbox" id='checkbox'
                            value={checkbox} />
 	                <label htmlFor="checkbox" >Ознакомлен с правилами</label>
-                    <button className="button" onClick={this.btnClick} disabled={!this.validate()}> Показать алерт </button>
+
+                    <button className="button" onClick={this.btnClick} disabled={!this.validate()}>Добавить</button>
 
                 </div>
             </form>
