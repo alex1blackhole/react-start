@@ -6,6 +6,9 @@
 ```sh
 $ npm i
 ```
+```sh
+$ npm start
+```
 Перейти на 
 ```sh
 http://localhost:3000

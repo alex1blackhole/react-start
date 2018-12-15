@@ -16,7 +16,6 @@ class Article extends Component {
         })
     };
 
-
     render() {
         const {author, text, bigText} = this.props.data;
         const { visible } = this.state;
