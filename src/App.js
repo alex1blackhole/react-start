@@ -2,17 +2,35 @@ import React, {Component} from 'react';
 import './App.css';
 import Add from "./Add";
 import News from "./News";
-import myNews from './myNews'
 
 class App extends Component {
 
 	constructor() {
 		super();
 		this.state = {
-			news: myNews,
-			loader:false
+			news: null,
+			loader: false
 		};
 	}
+
+	componentDidMount() {
+		const url = 'http://localhost:3000/myNews.json';
+
+		this.setState({
+			loader: true
+		});
+
+		fetch(url)
+			.then(response => response.json())
+			.catch(error => console.log(error))
+
+			.then(data => {
+				this.setState({
+					loader: false,
+					news: data
+				})
+			})
+	};
 
 	handleAddNews = (data) => {
 		const newNews = [data, ...this.state.news];
@@ -20,26 +38,18 @@ class App extends Component {
 		this.setState({news: newNews})
 	};
 
-	componentDidMount() {
-		const url = 'https://jsonplaceholder.typicode.com/users';
+	render() {
+		const {news, loader} = this.state;
 
-		fetch(url)
-			.then(response => response.json())
-			.then(data => console.log(data))
-			.catch(error => console.log(error))
-	};
-
-    render() {
-		const { news , loader } = this.state;
-
-	    return (
-            <div className="App">
-                <Add onAddNews={this.handleAddNews}/>
-                <h1>Новости</h1>
-	            <News data={this.state.news}/>
-            </div>
-        );
-    }
+		return (
+			<div className="App">
+				<Add onAddNews={this.handleAddNews}/>
+				<h1>Новости</h1>
+				{loader && <p>Загрузка</p>}
+				{Array.isArray(news) && <News data={news}/>}
+			</div>
+		);
+	}
 }
 
 export default App;
